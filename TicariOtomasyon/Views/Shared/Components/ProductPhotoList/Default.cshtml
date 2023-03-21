@@ -1,0 +1,58 @@
+﻿@using EntityLayer.Concrete
+@model List<Product>
+
+<div class="col-md-6 col-xl-4 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Ürünlerimiz</h4>
+            <div class="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel" id="owl-carousel-basic">
+                @foreach (var item in Model)
+                {
+                <div class="item">
+                    <img src="@item.ProductImage" alt="">
+                    <p class="text-muted">@item.ProductMark @item.ProductName</p>
+                    <p class="text">Stok Miktarı:</p>
+                    <div class="progress progress-md portfolio-progress">
+
+                        @if (item.ProductStock == 0)
+                        {
+                            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" title="%0"></div>
+                        } @if (item.ProductStock > 0 && item.ProductStock <= 10)
+                        {
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" title="%20"></div>
+                        }@if (item.ProductStock > 10 && item.ProductStock <= 20)
+                        {
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" title="%40"></div>
+                        }@if (item.ProductStock > 20 && item.ProductStock <= 30)
+                        {
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" title="%60"></div>
+                        }@if (item.ProductStock > 30 && item.ProductStock <= 40)
+                        {
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" title="%80"></div>
+                        }@if (item.ProductStock > 40)
+                        {
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" title="%100"></div>
+                        }
+
+
+
+
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .owl-carousel img {
+        height: 300px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .owl-carousel .text-muted {
+        text-align: center;
+    }
+</style>

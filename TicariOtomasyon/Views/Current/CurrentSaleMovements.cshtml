@@ -1,0 +1,55 @@
+﻿@using EntityLayer.Concrete
+@model List<SalesMovement>
+
+@{
+    ViewData["Title"] = "CurrentSaleMovements";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*@foreach (var item in Model)
+    {
+        <img src="@item.Current.CurrentImage" class="profile" style="width:150px;" />
+    }*@
+
+<div class="page-header">
+    <h3 class="page-title"> Satın Alınanlar </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Current/Index/">Cariler</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Satın Alınanlar</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+<div class="card">
+    <div class="card-body">
+
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Ürün</th>
+                <th>Personel</th>
+                <th>Fiyat</th>
+                <th>Adet</th>
+                <th>Toplam</th>
+                <th>Tarih</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>S-@item.SalesMovementsID</td>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Staff.StaffName @item.Staff.StaffSurname</td>
+                    <td>@item.SalesMovementsPrice ₺</td>
+                    <td>@item.SalesMovementsUnit</td>
+                    <td>@item.SalesMovementsTotal ₺</td>
+                    <td>@item.SalesMovementsDate.ToShortDateString()</td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,97 @@
+﻿@using EntityLayer.Concrete
+@model List<SalesMovement>
+
+@{
+    ViewData["Title"] = "DepartmentStaffMovements";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Satış Hareketleri </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Department/Index/">Departmanlar</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Satış Hareketleri</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+
+@if (Model.Count() != 0)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Ürün</th>
+            <th>Cari</th>
+            <th>Fiyat</th>
+            <th>Adet</th>
+            <th>Toplam</th>
+            <th>Tarih</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>S-@item.SalesMovementsID</td>
+                <td>@item.Product.ProductName</td>
+                <td>@item.Current.CurrentName @item.Current.CurrentSurname</td>
+                <td>@item.SalesMovementsPrice ₺</td>
+                <td>@item.SalesMovementsUnit</td>
+                <td>@item.SalesMovementsTotal ₺</td>
+                <td>@item.SalesMovementsDate.ToShortDateString()</td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="xs-12 md-6 mx-auto">
+                <div id="countUp">
+                    <div><i class="mdi mdi-alert-circle-outline text-warning"></i></div>
+                    <div class="text">Satış kaydı bulunamadı.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<style>
+
+
+    .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container,
+    .container > .row,
+    .container > .row > div {
+        height: 100%;
+    }
+
+    #countUp {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+    }
+
+    .text {
+        font-weight: 300;
+        font-size: 120%;
+        font-family: "Roboto Mono", "Liberation Mono", Consolas, monospace;
+        text-align: center;
+    }
+
+    i {
+        font-size: 350%;
+    }
+</style>

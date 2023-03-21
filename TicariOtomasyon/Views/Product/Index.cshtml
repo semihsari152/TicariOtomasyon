@@ -1,0 +1,88 @@
+﻿@using EntityLayer.Concrete
+@model List<Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table id="tbl2" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ürün</th>
+            <th>Kategori</th>
+            <th>Marka</th>
+            <th>Stok</th>
+            <th>Alış Fiyat</th>
+            <th>Satış Fiyat</th>
+            <th>Kar</th>
+            <th>Güncelle</th>
+            <th>Satış Yap</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        int sayi1 =(int)item.PurchasePrice;
+        int sayi2 = (int)item.SalePrice;
+        int kar = (sayi2 - sayi1) * 100/sayi1;
+
+        <tr>
+            <td>P-@item.ProductID  <a style="float:right" class="badge badge-info" href="/Product/ProductImageUpdate/@item.ProductID"><i class="mdi mdi-file-image-outline"></i></a></td>
+            <td>
+                @if (item.ProductName.Length < 20)
+                {
+                    @item.ProductName
+                }
+                else
+                {
+                    <p title="@item.ProductName">@item.ProductName.Substring(0, 20)...</p>
+                }
+            </td>
+            <td>
+                @if (item.Category.CategoryName.Length < 10)
+                {
+                    @item.Category.CategoryName 
+                }
+                else
+                {
+                    <p title ="@item.Category.CategoryName">
+                        @item.Category.CategoryName.Substring(0, 10)...</p>
+                }
+            </td>
+            <td>@item.ProductMark</td>
+            <td>@item.ProductStock</td>
+            <td>@item.PurchasePrice ₺</td>
+            <td>@item.SalePrice ₺</td>
+            <td class="text-success">%@kar <i class="mdi mdi-arrow-up"></i></td>
+            <td><a href="/Product/ProductUpdate/@item.ProductID" class="badge badge-success">Güncelle</a></td>
+            <td><a href="/Product/ProductSell/@item.ProductID" class="badge badge-primary">Satış Yap</a></td>
+            <td>
+                <a href="/Product/ProductChangeStatus/@item.ProductID">
+                    @if (item.ProductStatus == true)
+                    {
+                        <label class="badge badge-danger">Aktif</label>
+                    }
+                    else
+                    {
+                        <label class="badge badge-dark">Pasif</label>
+                    }
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl2').dataTable({});
+</script>
+

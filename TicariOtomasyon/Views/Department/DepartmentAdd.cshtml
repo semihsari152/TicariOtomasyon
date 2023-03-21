@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.Department
+
+@{
+    ViewData["Title"] = "DepartmentAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="page-header">
+    <h3 class="page-title"> Departman Ekleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Department/Index/">Departmanlar</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Departman Ekleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+<form class="form-group" method="post">
+
+    <div class="card">
+        <div class="card-body">
+
+            @Html.Label("Departman Adı")
+            @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+
+            <br />
+
+            <button class="btn btn-info">Kaydet</button>
+
+            </div>
+        </div>
+</form>
+

@@ -1,0 +1,149 @@
+﻿@model EntityLayer.Concrete.Admin
+
+@{
+    ViewData["Title"] = "CategoryAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="page-header">
+    <h3 class="page-title"> Hesap Ayarları </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Index/">Ayarlar</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Hesap Ayarları</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+
+@using (Html.BeginForm("AdminUpdate", "Admin", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.AdminID)
+
+<div class="row" style="background-color: #191c24;">
+
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <img src="~/panel/template/assets/images/faces/admin.png" />
+            </div>
+        </div>
+    </div>
+
+
+        <div class="col-md-5 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+
+                    <div class="form-group row">
+
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Kullanıcı :</label>
+
+                        <div class="col-sm-10">
+
+
+                            @Html.TextBoxFor(x => x.AdminUsername, new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label for="inputName" class="col-sm-2 col-form-label">Ad :</label>
+
+                        <div class="col-sm-10">
+
+                            @Html.TextBoxFor(x => x.AdminName, new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Soyad :</label>
+
+                        <div class="col-sm-10">
+
+                            @Html.TextBoxFor(x => x.AdminUsername, new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label for="inputName2" class="col-sm-2 col-form-label">Yetki :</label>
+
+                        <div class="col-sm-10">
+
+                            @Html.TextBoxFor(x => x.AdminPermission, new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Mail :</label>
+
+                        <div class="col-sm-10">
+
+
+                            @Html.TextBoxFor(x => x.AdminMail, new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Şifre :</label>
+
+                        <div class="col-sm-10">
+
+                            @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <div class="offset-sm-2 col-sm-10">
+
+                            <div class="checkbox">
+
+                                <label>
+
+                                    <input type="checkbox"> Şifremi değiştirmek istiyorum.
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <div class="offset-sm-2 col-sm-10">
+
+                            <button type="submit" class="btn btn-danger">Güncelle</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

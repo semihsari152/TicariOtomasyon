@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.Department
+
+@{
+    ViewData["Title"] = "DepartmentUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Departman Güncelleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Department/Index/">Departmanlar</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Departman Güncelleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+@using (Html.BeginForm("DepartmentUpdate", "Department", FormMethod.Post))
+{
+    <div class="card">
+        <div class="card-body">
+
+            @Html.HiddenFor(x => x.DepartmentID)
+            @Html.HiddenFor(x => x.DepartmentStatus)
+            <br />
+            @Html.Label("Departman Adı")
+            @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+
+            <br /><br />
+
+            <button class="btn btn-success">Güncelle</button>
+        </div>
+    </div>
+}
+

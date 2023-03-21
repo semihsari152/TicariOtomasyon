@@ -1,0 +1,46 @@
+﻿@model EntityLayer.Concrete.Staff
+
+@{
+    ViewData["Title"] = "StaffImageUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Personel Fotoğraf Güncelleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Staff/Index/">Personeller</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Personel Fotoğraf Güncelleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+@using (Html.BeginForm("StaffImageUpdate", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="card">
+        <div class="card-body">
+
+            @Html.HiddenFor(x => x.StaffID)
+            @Html.HiddenFor(x => x.StaffMail)
+            @Html.HiddenFor(x => x.StaffName)
+            @Html.HiddenFor(x => x.StaffSurname)
+            @Html.HiddenFor(x => x.StaffStatus)
+            @Html.HiddenFor(x => x.DepartmentID)
+
+
+            <br />
+
+
+
+            @Html.Label("Görsel")
+            <input type="file" name="StaffImage" class="form-control">
+
+            <br />
+            <button class="btn btn-success">Güncelle</button>
+
+        </div>
+    </div>
+}

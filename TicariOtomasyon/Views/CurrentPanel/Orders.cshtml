@@ -1,0 +1,41 @@
+﻿@using EntityLayer.Concrete
+@model List<SalesMovement>
+
+
+@{
+    ViewData["Title"] = "Orders";
+    Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+}
+
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sipariş Geçmişi</h4>    
+                    <div class="table-responsive">
+                        <table class="table user-table">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">ID</th>
+                                    <th class="border-top-0">Ürün Adı</th>
+                                    <th class="border-top-0">Fiyat</th>
+                                    <th class="border-top-0">Tarih</th>
+                                    <th class="border-top-0">Personel</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>S-@item.SalesMovementsID</td>
+                                        <td>@item.Product.ProductName</td>
+                                        <td>@item.SalesMovementsTotal</td>
+                                        <td>@item.SalesMovementsDate.ToShortDateString()</td>
+                                        <td>@item.Staff.StaffName @item.Staff.StaffSurname</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+       

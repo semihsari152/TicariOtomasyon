@@ -1,0 +1,64 @@
+﻿@using EntityLayer.Concrete
+@model List<SalesMovement>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ürün</th>
+            <th>Personel</th>
+            <th>Cari</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Toplam</th>
+            <th>Tarih</th>
+            <th>Güncelle</th>
+            <th>Fatura</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>S-@item.SalesMovementsID</td>
+            <td>
+                @if (item.Product.ProductName.Length < 19)
+                {
+                    @item.Product.ProductName
+                }
+                else
+                {
+                    @item.Product.ProductName.Substring(0, 19)
+                }
+
+            </td>
+            <td>@item.Staff.StaffName @item.Staff.StaffSurname</td>
+            <td>@item.Current.CurrentName @item.Current.CurrentSurname</td>
+            <td>@item.SalesMovementsUnit</td>
+            <td>@item.SalesMovementsPrice ₺</td>
+            <td>@item.SalesMovementsTotal ₺</td>
+            <td>@item.SalesMovementsDate.ToShortDateString()</td>
+            <td><a href="/SalesMovement/SalesMovementUpdate/@item.SalesMovementsID" class="badge badge-success">Güncelle</a></td>
+            <td><a href="/SalesMovement/GetReceipt/@item.SalesMovementsID" class="badge badge-primary">Fatura</a></td>
+        </tr>
+    }
+</table>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
+

@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Category
+
+@{
+    ViewData["Title"] = "CategoryAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Kategori Ekleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Category/Index/">Kategoriler</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Kategori Ekleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+<form class="form-group" method="post" enctype="multipart/form-data">
+
+    <div class="card" style="background-color:none">
+        <div class="card-body">
+
+
+            @Html.Label("Kategori Adı")
+            @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+
+            <br />
+
+            @Html.Label("Kategori Resim")
+
+            <input type="file" name="CategoryImage" class="form-control" />
+
+
+
+            <br />
+
+            <button class="btn btn-info" id="btn1">Kaydet</button>
+
+            </div>
+        </div>
+</form>

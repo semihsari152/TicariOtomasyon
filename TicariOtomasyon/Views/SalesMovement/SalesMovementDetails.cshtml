@@ -1,0 +1,51 @@
+﻿@using EntityLayer.Concrete
+@model List<SalesMovement>
+
+@{
+    ViewData["Title"] = "SalesMovementDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Satış Detayları </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/SalesMovement/Index/">Satışlar</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Satış Detayları</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+<div class="card">
+    <div class="card-body">
+
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Ürün</th>
+                <th>Cari</th>
+                <th>Fiyat</th>
+                <th>Adet</th>
+                <th>Toplam</th>
+                <th>Tarih</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SalesMovementsID</td>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Current.CurrentName @item.Current.CurrentSurname</td>
+                    <td>@item.SalesMovementsPrice</td>
+                    <td>@item.SalesMovementsUnit</td>
+                    <td>@item.SalesMovementsTotal</td>
+                    <td>@item.SalesMovementsDate.ToShortDateString()</td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@using EntityLayer.Concrete
+@model List<Receipt>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Seri Sıra No</th>
+        <th>Vergi Dairesi</th>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Toplam</th>
+        <th>Teslim Eden</th>
+        <th>Teslim Alan</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+        <th>PDF/Excel</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>R-@item.ReceiptID</td>
+    <td>@item.ReceiptSerialNumber @item.ReceiptLineNumber</td>
+    <td>@item.ReceiptTaxAuthority</td>
+    <td>@item.ReceiptDate.ToShortDateString()</td>
+    <td>@item.ReceiptTime</td>
+    <td>@item.ReceiptTotal ₺</td>
+    <td>@item.ReceiptSupplier</td>
+    <td>@item.ReceiptReceiver</td>
+    <td><a href="/Receipt/ReceiptUpdate/@item.ReceiptID" class="badge badge-success">Güncelle</a></td>
+    <td><a href="/Receipt/ReceiptDetails/@item.ReceiptID" class="badge badge-danger">Detaylar</a></td>
+    <td><a href="/Receipt/TransformReceipt/@item.ReceiptID" class="badge badge-warning">Dönüştür</a></td>
+
+</tr>
+    }
+
+</table>
+<br />
+<br />

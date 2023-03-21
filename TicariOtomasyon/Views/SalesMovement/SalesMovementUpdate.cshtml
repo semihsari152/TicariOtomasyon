@@ -1,0 +1,61 @@
+﻿@model EntityLayer.Concrete.SalesMovement
+
+@{
+    ViewData["Title"] = "SalesMovementUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="page-header">
+    <h3 class="page-title"> Satış Güncelleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/SalesMovement/Index/">Satışlar</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Satış Güncelleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+@using (Html.BeginForm("SalesMovementUpdate", "SalesMovement", FormMethod.Post))
+{
+    <div class="card">
+        <div class="card-body">
+
+
+            @Html.HiddenFor(x => x.SalesMovementsID)
+
+            @Html.Label("Ürün")
+            @Html.DropDownListFor(x => x.ProductID, (List<SelectListItem>)ViewBag.productv, new { @class = "form-control" })
+            <br />
+
+            @Html.Label("Cari")
+            @Html.DropDownListFor(x => x.CurrentID, (List<SelectListItem>)ViewBag.currentv, new { @class = "form-control" })
+            <br />
+
+            @Html.Label("Personel")
+            @Html.DropDownListFor(x => x.StaffID, (List<SelectListItem>)ViewBag.staffv, new { @class = "form-control" })
+            <br />
+
+            @Html.Label("Adet")
+            @Html.TextBoxFor(x => x.SalesMovementsUnit, new { @class = "form-control" })
+            <br />
+
+            @Html.Label("Fiyat")
+            @Html.TextBoxFor(x => x.SalesMovementsPrice, new { @class = "form-control" })
+            <br />
+
+            @Html.Label("Toplam Tutar")
+            @Html.TextBoxFor(x => x.SalesMovementsTotal, new { @class = "form-control" })
+            <br />
+
+            @Html.Label("Tarih")
+            @Html.TextBoxFor(x => x.SalesMovementsDate, new { @class = "form-control" })
+            <br />
+
+            <button class="btn btn-warning">Güncelle</button>
+
+        </div>
+    </div>
+}

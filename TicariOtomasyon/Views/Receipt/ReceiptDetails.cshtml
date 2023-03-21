@@ -1,0 +1,46 @@
+﻿@using EntityLayer.Concrete
+@model List<ReceiptDetail>
+
+@{
+    ViewData["Title"] = "ReceiptDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Fatura Detayları </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Receipt/Index/">Faturalar</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Fatura Detayları</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+<div class="card">
+    <div class="card-body">
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Fatura ID</th>
+                <th>Açıklama</th>
+                <th>Miktar</th>
+                <th>Birim Fiyat</th>
+                <th>Tutar</th>
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>R-@item.Receipt.ReceiptID</td>
+                    <td>@item.ReceiptDetailsDescription</td>
+                    <td>@item.ReceiptDetailsAmount</td>
+                    <td>@item.ReceiptDetailsUnitPrice</td>
+                    <td>@item.ReceiptDetailsTotal</td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>

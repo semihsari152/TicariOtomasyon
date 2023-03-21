@@ -1,0 +1,70 @@
+﻿@using EntityLayer.Concrete
+@model List<SalesMovement>
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Satış Detayları</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="form-check form-check-muted m-0">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input">
+                                    </label>
+                                </div>
+                            </th>
+                            <th> Cari </th>
+                            <th> Ürün Adı </th>
+                            <th> Toplam Tutar </th>
+                            <th> Personel </th>
+                            <th> Tarih </th>
+                            <th> Durum </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {       
+                        <tr>
+                            <td>
+                                <div class="form-check form-check-muted m-0">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input">
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <img src="@item.Current.CurrentImage" alt="image" />
+                                <span class="pl-2">@item.Current.CurrentName @item.Current.CurrentSurname</span>
+                            </td>
+                            <td>
+                                @if (item.Product.ProductName.Length < 20)
+                                {
+                                    @item.Product.ProductName
+                                }
+                                else
+                                {
+                                    <p>@item.Product.ProductName.Substring(0, 20)...</p>
+                                }
+                            </td>
+                            <td> @item.SalesMovementsTotal ₺ </td>
+                            <td>
+                                <img src="@item.Staff.StaffImage" alt="image" />
+                                <span class="pl-2">@item.Staff.StaffName @item.Staff.StaffSurname</span>
+                            </td>
+                            <td> @item.SalesMovementsDate.ToShortDateString() </td>
+                            <td><a href="/SalesMovement/GetReceipt/@item.SalesMovementsID" class="badge badge-info">Detaylar</a></td>
+                        </tr> 
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+</script>

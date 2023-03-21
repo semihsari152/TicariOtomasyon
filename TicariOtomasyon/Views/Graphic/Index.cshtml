@@ -1,0 +1,255 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div id="chartdiv" style="width:650px; height:450px">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div id="chartdiv2" style="width: 650px; height: 450px ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div id="chartdiv3" style="width: 650px; height: 450px ">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div id="chartdiv4" style="width: 650px; height: 450px ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(DrawonLoad);
+
+    function DrawonLoad() {
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Graphic/ProList/',
+                success: function (chartsdata) {
+
+                    var Data = chartsdata.jsonlist;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'name');
+                    data.addColumn('number', 'count');
+
+                    for (var i = 0; i < Data.length; i++) {
+                        data.addRow([Data[i].name, Data[i].count]);
+                    }
+
+                    var chart = new google.visualization.PieChart(document.getElementById('chartdiv'));
+
+                    chart.draw(data,
+                        {
+                            title: "Kategori - Stok Grafiği",
+                            position: "center",
+                            fontsize: "16px",
+                            backgroundColor: '#191C24',
+                            color: 'white',
+                            opacity: 100,
+                            titleTextStyle: {
+                                color: "white"
+                            },
+
+                            is3D: true,
+                            legend: { position: 'none' }
+                        });
+                },
+                error: function () {
+                    alert("HATAAAA")
+                }
+            });
+        })
+    }
+
+</script>
+
+
+@************************************************************************@
+
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(DrawonLoad);
+
+    function DrawonLoad() {
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Graphic/ProList2/',
+                success: function (chartsdata) {
+
+                    var Data = chartsdata.jsonlist;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'name');
+                    data.addColumn('number', 'count');
+
+                    for (var i = 0; i < Data.length; i++) {
+                        data.addRow([Data[i].name, Data[i].count]);
+                    }
+
+                    var chart = new google.visualization.PieChart(document.getElementById('chartdiv2'));
+
+                    chart.draw(data,
+                        {
+                            title: "Departman - Personel Grafiği",
+                            position: "center",
+                            fontsize: "16px",
+                            backgroundColor: '#191C24',
+                            color: 'white',
+                            opacity: 100,
+                            titleTextStyle: {
+                                color: "white"
+                            },
+                            pieHole: 0.5,
+                            pieSliceTextStyle: {
+                                color: 'black',
+                            },
+                            legend: { position: 'none' }
+                        });
+                },
+                error: function () {
+                    alert("HATAAAA")
+                }
+            });
+        })
+    }
+
+</script>
+
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(DrawonLoad);
+
+    function DrawonLoad() {
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Graphic/ProList3/',
+                success: function (chartsdata) {
+
+                    var Data = chartsdata.jsonlist;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'name');
+                    data.addColumn('number', 'count');
+
+                    for (var i = 0; i < Data.length; i++) {
+                        data.addRow([Data[i].name, Data[i].count]);
+                    }
+
+                    var chart = new google.visualization.PieChart(document.getElementById('chartdiv3'));
+
+                    chart.draw(data,
+                        {
+                            title: "Ürün - Satış Grafiği",
+                            position: "center",
+                            fontsize: "16px",
+                            backgroundColor: '#191C24',
+                            color: 'white',
+                            opacity: 100,
+                            titleTextStyle: {
+                                color: "white"
+                            },
+                            legend: { position: 'none' }
+                        });
+                },
+                error: function () {
+                    alert("HATAAAA")
+                }
+            });
+        })
+    }
+
+</script>
+
+
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(DrawonLoad);
+
+    function DrawonLoad() {
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Graphic/ProList4/',
+                success: function (chartsdata) {
+
+                    var Data = chartsdata.jsonlist;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'name');
+                    data.addColumn('number', 'count');
+
+                    for (var i = 0; i < Data.length; i++) {
+                        data.addRow([Data[i].name, Data[i].count]);
+                    }
+
+                    var chart = new google.visualization.ColumnChart(document.getElementById('chartdiv4'));
+
+                    chart.draw(data,
+                        {
+                            title: "Cari - Satış Grafiği",
+                            position: "center",
+                            fontsize: "16px",
+                            backgroundColor: '#191C24',
+                            color: 'white',
+                            opacity: 100,
+                            titleTextStyle: {
+                                color: "white"
+                            },
+                            legend: { position: 'none' },
+                            hAxis: {
+                                textStyle: { color: '#191C24' }
+                            }
+                        });
+                },
+                error: function () {
+                    alert("HATAAAA")
+                }
+            });
+        })
+    }
+
+</script>

@@ -1,0 +1,95 @@
+﻿@model TicariOtomasyon.Models.AddProfileImage
+
+@{
+    ViewData["Title"] = "StaffAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Personel Ekleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Staff/Index/">Personeller</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Personel Ekleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+<form class="form-group" method="post" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-body">
+
+            @Html.Label("Personel Adı")
+            @Html.TextBoxFor(x => x.StaffName, new { @class = "form-control" })
+
+            <br />
+
+            @Html.Label("Personel Soyadı")
+            @Html.TextBoxFor(x => x.StaffSurname, new { @class = "form-control" })
+
+            <br />
+
+            @Html.Label("Personel Mail")
+            @Html.TextBoxFor(x => x.StaffMail, new { @class = "form-control" })
+
+            <br />
+
+            @Html.Label("Personel Resim")
+            <br />
+            @*@Html.TextBoxFor(x => x.StaffImage, new { @class = "form-control" })*@
+            <input type="file" name="StaffImage" class="form-control" />
+
+
+            <br />
+
+            @Html.Label("Departman")
+            @Html.DropDownListFor(x => x.DepartmentID, (List<SelectListItem>)ViewBag.pv, new { @class = "form-control" })
+            <br />
+
+
+            <button type="submit" class="btn btn-info">Kaydet</button>
+
+        </div>
+    </div>
+</form>
+
+@*@model TicariOtomasyon.Models.AddProfileImage
+
+    @{
+        ViewData["Title"] = "StaffAdd";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+    <br />
+    <h1>Personel Ekleme Sayfası</h1>
+
+    <br />*@
+
+@*<form class="form-group" method="post" enctype="multipart/form-data">
+
+        @Html.Label("Personel Adı")
+        @Html.TextBoxFor(x => x.StaffName, new { @class = "form-control" })
+
+        <br />
+
+        @Html.Label("Personel Soyadı")
+        @Html.TextBoxFor(x => x.StaffSurname, new { @class = "form-control" })
+
+        <br />
+
+        @Html.Label("Personel Resim")
+
+        <input type="file" name="StaffImage" />
+
+        <br />
+
+        @Html.Label("Departman")
+        @Html.DropDownListFor(x => x.DepartmentID, (List<SelectListItem>)ViewBag.pv, new { @class = "form-control" })
+        <br />
+
+
+
+    </form>*@

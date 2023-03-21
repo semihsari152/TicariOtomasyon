@@ -1,0 +1,336 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v1</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-info ">
+                                    <span class="mdi mdi-account-multiple-outline icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Toplam Cari</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v2</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-success">
+                                    <span class="mdi mdi-content-paste icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Ürün Sayısı</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v3</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-warning">
+                                    <span class="mdi mdi-worker icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Personel Sayısı</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v4</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-danger ">
+                                    <span class="mdi mdi-animation icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Kategori Sayısı</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v5</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-primary ">
+                                    <span class="mdi mdi-database icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Toplam Stok</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v6</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-info">
+                                    <span class="mdi mdi-bookmark icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Marka Sayısı</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v7</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-success">
+                                    <span class="mdi mdi-chart-areaspline icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Kritik Seviye</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v8</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-warning ">
+                                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Max Fiyatlı Ürün</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v9</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-danger ">
+                                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Min Fiyatlı Ürün</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v10</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-primary">
+                                    <span class="mdi mdi-fridge icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Buzdolabı Sayısı</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v11</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-info">
+                                    <span class="mdi mdi-laptop icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Laptop Sayısı</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v12</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-success ">
+                                    <span class="mdi mdi-basket icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Max Marka</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v13</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-warning ">
+                                    <span class="mdi mdi-arrow-up-bold-hexagon-outline icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">En Çok Satan</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v14</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-danger">
+                                    <span class="mdi mdi-currency-try icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Kasadaki Tutar</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v15</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-primary">
+                                    <span class="mdi mdi-calendar-text icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Bugünkü Satışlar</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="mb-0">@ViewBag.v16</h3>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="icon icon-box-info ">
+                                    <span class="mdi mdi-city icon-item"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Max Şehir</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style>
+    .card {
+        background-color: #191C24;
+    }
+</style>

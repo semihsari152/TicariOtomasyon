@@ -1,0 +1,66 @@
+﻿@model EntityLayer.Concrete.SalesMovement
+
+@{
+    ViewData["Title"] = "ProductAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+
+<div class="page-header">
+    <h3 class="page-title"> Ürün Satış </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Product/Index/">Ürünler</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ürün Satış</li>
+        </ol>
+    </nav>
+</div>
+<br />
+
+<form class="form-group" method="post">
+
+    @Html.Label("Ürün ID")
+    <input type="text" name="ProductID" value="@ViewBag.dgr1" class="form-control" />
+    <br />
+
+    @Html.Label("Personel Ad Soyad")
+    @Html.DropDownListFor(x => x.StaffID, (List<SelectListItem>)ViewBag.sv, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Cari  Ad Soyad")
+    @Html.DropDownListFor(x => x.CurrentID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Ürün Adedi")
+    <input type="number" name="SalesMovementsUnit" class="form-control" max="10" min="0" id="txt1" onchange="sum();" />
+    <br />
+
+    @Html.Label("Satış Fiyatı")
+    <input type="text" name="SalesMovementsPrice" value="@ViewBag.dgr2" class="form-control" id="txt2" onkeyup="sum();" />
+    <br />
+
+    @Html.Label("Toplam Tutar")
+    <input type="text" name="SalesMovementsTotal" value="0" class="form-control" id="txt3" readonly />
+    <br />
+
+
+    <button class="btn btn-info">Kaydet</button>
+</form>
+
+<script>
+    function sum() {
+        var sayi1 = document.getElementById('txt1').value;
+        var sayi2 = document.getElementById('txt2').value;
+        var sonuc = parseInt(sayi1) * parseInt(sayi2);
+        if (!isNaN(sonuc))
+    {
+            document.getElementById('txt3').value = sonuc;
+        }
+    }
+</script>
+
+<style>
+    input[readonly] {
+        background-color: #2A3038 !important;
+    }
+</style>

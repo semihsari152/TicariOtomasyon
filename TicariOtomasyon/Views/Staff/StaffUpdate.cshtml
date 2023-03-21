@@ -1,0 +1,50 @@
+﻿@model EntityLayer.Concrete.Staff
+
+@{
+    ViewData["Title"] = "StaffUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Personel Güncelleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Staff/Index/">Personeller</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Personel Güncelleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+@using (Html.BeginForm("StaffUpdate", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="card">
+        <div class="card-body">
+
+            @Html.HiddenFor(x => x.StaffID)
+            @Html.HiddenFor(x => x.StaffStatus)
+            @Html.HiddenFor(x => x.StaffImage)
+            <br />
+            @Html.Label("Personel Adı")
+            @Html.TextBoxFor(x => x.StaffName, new { @class = "form-control" })
+
+            <br />
+            @Html.Label("Personel Soyadı")
+            @Html.TextBoxFor(x => x.StaffSurname, new { @class = "form-control" })
+
+            <br />
+            @Html.Label("Personel Mail")
+            @Html.TextBoxFor(x => x.StaffMail, new { @class = "form-control" })
+
+           
+            <br />
+            @Html.Label("Departman")
+            @Html.DropDownListFor(x => x.DepartmentID, (List<SelectListItem>)ViewBag.pv, new { @class = "form-control" })
+            <br />
+
+            <button class="btn btn-success">Güncelle</button>
+        </div>
+    </div>
+}
+

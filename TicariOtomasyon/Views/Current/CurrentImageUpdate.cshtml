@@ -1,0 +1,47 @@
+﻿@model EntityLayer.Concrete.Current
+
+
+@{
+    ViewData["Title"] = "CurrentImageUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Cari Fotoğraf Güncelleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Current/Index/">Cariler</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cari Fotoğraf Güncelleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+@using (Html.BeginForm("CurrentImageUpdate", "Current", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="card">
+        <div class="card-body">
+
+            @Html.HiddenFor(x => x.CurrentID)
+            @Html.HiddenFor(x => x.CurrentStatus)
+            @Html.HiddenFor(x => x.CurrentCity)
+            @Html.HiddenFor(x => x.CurrentMail)
+            @Html.HiddenFor(x => x.CurrentName)
+            @Html.HiddenFor(x => x.CurrentSurname)
+            @Html.HiddenFor(x => x.CurrentPassword)
+            @Html.HiddenFor(x => x.CurrentPhone)
+            <br />
+
+           
+
+            @Html.Label("Görsel")
+            <input type="file" name="CurrentImage" class="form-control">
+
+            <br />
+            <button class="btn btn-success">Güncelle</button>
+
+        </div>
+    </div>
+}

@@ -1,0 +1,64 @@
+﻿@model EntityLayer.Concrete.Receipt
+
+@{
+    ViewData["Title"] = "ReceiptAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title"> Fatura Ekleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Receipt/Index/">Faturalar</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Fatura Ekleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+
+<form class="form-group" method="post">
+
+    <div class="card">
+        <div class="card-body">
+
+            @Html.Label("Seri No")
+            @Html.TextBoxFor(x => x.ReceiptSerialNumber, new { @class = "form-control" })
+
+            <br />
+            @Html.Label("Sıra No")
+            @Html.TextBoxFor(x => x.ReceiptLineNumber, new { @class = "form-control" })
+
+            <br />
+            @Html.Label("Vergi Dairesi")
+            @Html.TextBoxFor(x => x.ReceiptTaxAuthority, new { @class = "form-control" })
+
+            <br />
+            @Html.Label("Tarih")
+            @Html.TextBoxFor(x => x.ReceiptDate, new { @class = "form-control" })
+
+            <br />
+            @Html.Label("Saat")
+            @Html.TextBoxFor(x => x.ReceiptTime, new { @class = "form-control" })
+
+            <br />
+            @Html.Label("Toplam")
+            @Html.TextBoxFor(x => x.ReceiptTotal, new { @class = "form-control" })
+
+            <br />
+            @Html.Label("Teslim Eden")
+            @Html.TextBoxFor(x => x.ReceiptSupplier, new { @class = "form-control" })
+
+            <br />
+            @Html.Label("Teslim Alan")
+            @Html.TextBoxFor(x => x.ReceiptReceiver, new { @class = "form-control" })
+
+            <br />
+
+            <button class="btn btn-info">Kaydet</button>
+
+        </div>
+    </div>
+</form>
+

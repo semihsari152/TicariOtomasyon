@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete 
+@model List<Message>
+
+@{
+    ViewData["Title"] = "AllMessages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Tüm Mesajlar</h1>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Gönderici</th>
+        <th>Mesaj</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MessageID</td>
+            <td>@item.MessageSender</td>
+            <td>@item.MessageDetails</td>
+            <td>@item.MessageDate.ToShortDateString()</td>
+        </tr>
+    }
+</table>
