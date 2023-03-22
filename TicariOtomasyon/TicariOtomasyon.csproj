@@ -39,4 +39,9 @@
     <Folder Include="wwwroot\panel\template\assets\images\product-images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\ToDoList\Index.cshtml" />
+    <None Include="Views\ToDoList\ListAdd.cshtml" />
+  </ItemGroup>
+
 </Project>

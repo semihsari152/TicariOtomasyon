@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.ToDoList
+
+@{
+    ViewData["Title"] = "ListAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="page-header">
+    <h3 class="page-title"> Görev Ekleme </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard/Index/">Yapılacaklar</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Görev Ekleme</li>
+        </ol>
+    </nav>
+</div>
+
+<br />
+
+<form class="form-group" method="post">
+
+    <div class="card">
+        <div class="card-body">
+
+            @Html.Label("Görev")
+            @Html.TextBoxFor(x => x.ToDoListName, new { @class = "form-control" })
+
+            <br />
+
+            <button class="btn btn-info">Kaydet</button>
+
+        </div>
+    </div>
+</form>
+

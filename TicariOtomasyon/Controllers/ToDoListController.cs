@@ -18,16 +18,25 @@ namespace TicariOtomasyon.Controllers
             return View();
         }
 
-        public IActionResult ListAdd(string subject)
-        {
-            ToDoList list = new ToDoList();
 
-            list.ToDoListName = subject;
+        [HttpGet]
+        public IActionResult ListAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult ListAdd(ToDoList list)
+        {
+            
             list.ToDoListStatus = true;
             tm.TAdd(list);
-        
-            return RedirectToAction("Index","Dashboard");
+
+            return RedirectToAction("Index", "Dashboard");
         }
+
+
 
         public IActionResult ListDelete(int id)
         {
