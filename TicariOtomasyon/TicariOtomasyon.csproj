@@ -5,13 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\ToDoList\**" />
-    <Content Remove="Views\ToDoList\**" />
-    <EmbeddedResource Remove="Views\ToDoList\**" />
-    <None Remove="Views\ToDoList\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="jquery.datatables" Version="1.10.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
@@ -37,11 +30,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\panel\template\assets\images\current-images\" />
     <Folder Include="wwwroot\panel\template\assets\images\product-images\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\ToDoList\Index.cshtml" />
-    <None Include="Views\ToDoList\ListAdd.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -6,13 +6,12 @@
         <div class="card-body">
             <h4 class="card-title">Yapılacaklar</h4>
                   
-                    <a href="/ToDoList/ListAdd/" class="btn btn-primary">Ekle</a>
-             
+                  
 
-                <div class="list-wrapper">
-                    <ul class="d-flex flex-column-reverse text-white todo-list todo-list-custom">
-                        @foreach (var item in Model)
-                        {
+            <div class="list-wrapper">
+                <ul class="d-flex flex-column-reverse text-white todo-list todo-list-custom">
+                    @foreach (var item in Model)
+                    {
                         <li>
                             <div class="form-check form-check-primary">
                                 <label class="form-check-label">
@@ -22,9 +21,12 @@
                             <a class="remove" href="/ToDoList/ListDelete/@item.ToDoListID"><i class="mdi mdi-close-box"></i></a>
                         </li>
 
-                        }
-                    </ul>
-                </div>
+                    }
+                </ul>
+                <hr />
+                <a href="/ToDoList/ListAdd/" class="btn btn-primary">Yeni Görev Ekle</a>
+
+            </div>
         </div>
     </div>
 </div>

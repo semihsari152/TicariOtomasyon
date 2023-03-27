@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TicariOtomasyon.Models;
 
 namespace TicariOtomasyon.Controllers
 {
@@ -18,6 +19,7 @@ namespace TicariOtomasyon.Controllers
         ProductManager pm = new ProductManager(new EfProductRepository());
         CurrentManager cm = new CurrentManager(new EfCurrentRepository());
         StaffManager sm = new StaffManager(new EfStaffRepository());
+        NotificationClass nc = new NotificationClass();
 
         Context c = new Context();
         public IActionResult Index()
@@ -69,6 +71,9 @@ namespace TicariOtomasyon.Controllers
                 salesMovement.SalesMovementsDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 svm.TAdd(salesMovement);
 
+
+                nc.NotificationAdd(salesMovement.SalesMovementsID.ToString(), "Satış");
+
                 TempData["eklendi"] = "";
             }
             else
@@ -118,6 +123,8 @@ namespace TicariOtomasyon.Controllers
             if (salesMovement.SalesMovementsPrice > 0 && salesMovement.SalesMovementsTotal > 0 && salesMovement.SalesMovementsUnit > 0)
             {
                 svm.TUpdate(salesMovement);
+
+                nc.NotificationUpdate(salesMovement.SalesMovementsID.ToString(), "Satış");
 
                 TempData["güncellendi"] = "";
             }

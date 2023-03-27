@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TicariOtomasyon.Models;
 
 namespace TicariOtomasyon.Controllers
 {
@@ -38,16 +39,25 @@ namespace TicariOtomasyon.Controllers
             var mevcutkar = (int)((satılan - alınan) * 100 / alınan);
             ViewBag.mevcutkar = mevcutkar;
 
+            var beklenen = (mevcutkar - kar);
 
-            var beklenen = (mevcutkar - kar)*(-1);
-            ViewBag.beklenen = beklenen;
+            if (mevcutkar > kar)
+            {
+                
+                ViewBag.beklenen = beklenen;
+            }
+            else
+            {
+                ViewBag.beklenen = beklenen* (-1);
+
+            }
 
 
             //üst tablo için
             DateTime today = DateTime.Today;
             var satis = c.SalesMovements.Count(x => x.SalesMovementsDate == today).ToString();
             ViewBag.satis = satis;
-
+            
             //bugün satılan ürünlerden gelen para
             var toplamtutar = c.SalesMovements.Where(x=>x.SalesMovementsDate==today).Sum(x => x.Product.SalePrice);
             ViewBag.toplamtutar = toplamtutar;
@@ -56,6 +66,23 @@ namespace TicariOtomasyon.Controllers
             ViewBag.satilanurun = satilanurun;
 
             return View();
+
+        }
+
+        public IActionResult ProList3()
+        {
+            List<CategoryClass> snf = new List<CategoryClass>();
+
+            using (var c = new Context())
+            {
+                snf = c.Products.Select(x => new CategoryClass
+                {
+                    name = x.ProductName,
+                    count = x.SalesMovements.Count()
+                }).ToList();
+            }
+
+            return Json(new { jsonlist = snf });
         }
     }
 }
