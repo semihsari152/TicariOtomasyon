@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TicariOtomasyon.Models;
 
 namespace TicariOtomasyon.Controllers
 {
@@ -17,7 +16,6 @@ namespace TicariOtomasyon.Controllers
 
         DepartmentManager dm = new DepartmentManager(new EfDepartmentRepository());
         Context c = new Context();
-        NotificationClass nc = new NotificationClass();
 
         public IActionResult Index()
         {
@@ -40,19 +38,13 @@ namespace TicariOtomasyon.Controllers
                 department.DepartmentStatus = true;
                 dm.TAdd(department);
 
-
-                nc.NotificationAdd(department.DepartmentName,"Departman");
-
-
                 TempData["eklendi"] = "";
             }
             else
             {
                 TempData["basarisiz"] = "";
             }
-
            
-
             return RedirectToAction("Index");
         }
 
@@ -60,8 +52,6 @@ namespace TicariOtomasyon.Controllers
         {
             var value = dm.GetById(id);
             value.DepartmentStatus = false;
-
-            nc.NotificationDelete(value.DepartmentName, "Departman");
 
             dm.TDelete(value);
 
@@ -84,8 +74,6 @@ namespace TicariOtomasyon.Controllers
             if (department.DepartmentName != null)
             {
                 dm.TUpdate(department);
-
-                nc.NotificationUpdate(department.DepartmentName, "Departman");
 
                 TempData["güncellendi"] = "";
             }

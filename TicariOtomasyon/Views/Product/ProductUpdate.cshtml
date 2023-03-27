@@ -48,6 +48,9 @@
             @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.pv, new { @class = "form-control" })
             <br />
 
+            @Html.Label("Görsel")
+            <input type="file" name="ProductImage" class="form-control" />
+            <br />
 
             <button class="btn btn-success">Güncelle</button>
         </div>

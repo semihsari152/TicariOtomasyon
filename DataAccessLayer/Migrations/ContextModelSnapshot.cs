@@ -200,9 +200,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("NotificationTypeSymbol")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NotificationValue")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("NotificationID");
 
                     b.ToTable("Notifications");

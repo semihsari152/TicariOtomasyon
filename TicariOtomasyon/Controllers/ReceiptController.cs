@@ -16,8 +16,6 @@ namespace TicariOtomasyon.Controllers
     {
         ReceiptManager rm = new ReceiptManager(new EfReceiptRepository());
         Context c = new Context();
-        NotificationClass nc = new NotificationClass();
-
         public IActionResult Index()
         {
             var values = rm.GetList();
@@ -36,9 +34,6 @@ namespace TicariOtomasyon.Controllers
             if (receipt.ReceiptLineNumber != null && receipt.ReceiptReceiver != null && receipt.ReceiptSerialNumber != null && receipt.ReceiptSupplier != null && receipt.ReceiptTaxAuthority != null && receipt.ReceiptTime != null && receipt.ReceiptTotal >0 )
             {
                 rm.TAdd(receipt);
-
-
-                nc.NotificationAdd(receipt.ReceiptSerialNumber + "-" + receipt.ReceiptLineNumber, "Fatura");
 
                 TempData["eklendi"] = "";
             }
@@ -63,8 +58,6 @@ namespace TicariOtomasyon.Controllers
             if (receipt.ReceiptLineNumber != null && receipt.ReceiptReceiver != null && receipt.ReceiptSerialNumber != null && receipt.ReceiptSupplier != null && receipt.ReceiptTaxAuthority != null && receipt.ReceiptTime != null && receipt.ReceiptTotal > 0)
             {
                 rm.TUpdate(receipt);
-
-                nc.NotificationUpdate(receipt.ReceiptSerialNumber + "-" + receipt.ReceiptLineNumber, "Fatura");
 
                 TempData["güncellendi"] = "";
             }
