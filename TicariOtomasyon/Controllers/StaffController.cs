@@ -16,6 +16,7 @@ namespace TicariOtomasyon.Controllers
     {
         StaffManager sm = new StaffManager(new EfStaffRepository());
         DepartmentManager dm = new DepartmentManager(new EfDepartmentRepository());
+        NotificationClass nc = new NotificationClass();
 
         public IActionResult Index()
         {
@@ -53,7 +54,9 @@ namespace TicariOtomasyon.Controllers
             s.StaffStatus = true;
             sm.TAdd(s);
 
-            TempData["eklendi"] = "";
+                nc.NotificationAdd(s.StaffName +" "+ s.StaffSurname, "Personel");
+
+                TempData["eklendi"] = "";
 
             }
             else
@@ -67,6 +70,8 @@ namespace TicariOtomasyon.Controllers
         public IActionResult StaffDelete(int id)
         {
             var value = sm.GetById(id);
+
+            nc.NotificationDelete(value.StaffName + " " + value.StaffSurname, "Personel");
 
             value.StaffStatus = false;
 
@@ -99,6 +104,8 @@ namespace TicariOtomasyon.Controllers
                 s.StaffStatus = true;
                 sm.TUpdate(s);
 
+                nc.NotificationUpdate(s.StaffName + " " + s.StaffSurname, "Personel");
+
                 TempData["güncellendi"] = "";
             }
             else
@@ -129,6 +136,9 @@ namespace TicariOtomasyon.Controllers
                 staff.StaffImage = "/panel/template/assets/images/faces/" + newimagename;
 
                 sm.TUpdate(staff);
+
+                nc.NotificationUpdate(staff.StaffName + " " + staff.StaffSurname, "Personel");
+
                 TempData["güncellendi"] = "";
             }
             else

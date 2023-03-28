@@ -24,6 +24,7 @@ namespace TicariOtomasyon.Controllers
         Context c = new Context();
         SalesMovementManager svm = new SalesMovementManager(new EfSalesMovementRepository());
         CurrentManager currentManager = new CurrentManager(new EfCurrentRepository());
+        NotificationClass nc = new NotificationClass();
 
         public IActionResult Index()
         {
@@ -61,6 +62,8 @@ namespace TicariOtomasyon.Controllers
                 product.ProductStatus = true;
                 pm.TAdd(product);
 
+                nc.NotificationAdd(product.ProductName, "Ürün");
+
                 TempData["eklendi"] = "";
             }
             else
@@ -73,6 +76,9 @@ namespace TicariOtomasyon.Controllers
         public IActionResult ProductDelete(int id)
         {
             var value = pm.GetById(id);
+
+            nc.NotificationDelete(value.ProductName, "Ürün");
+
             pm.TDelete(value);
             TempData["silindi"] = "";
             return RedirectToAction("Index");
@@ -98,7 +104,11 @@ namespace TicariOtomasyon.Controllers
         {
             if (product.ProductMark != null && product.ProductName != null && product.ProductStock > 0 && product.PurchasePrice > 0 && product.SalePrice > 0)
             {
+
+                product.ProductStatus = true;
                 pm.TUpdate(product);
+
+                nc.NotificationUpdate(product.ProductName, "Ürün");
 
                 TempData["güncellendi"] = "";
             }
@@ -181,6 +191,7 @@ namespace TicariOtomasyon.Controllers
             receiptDetail.ReceiptID = receipt.ReceiptID;
             rdm.TAdd(receiptDetail);
 
+            nc.NotificationSell(values.productName, "Ürün");
 
             return RedirectToAction("Index", "SalesMovement");
         }
@@ -194,6 +205,7 @@ namespace TicariOtomasyon.Controllers
             if (value.ProductStatus == true)
             {
                 value.ProductStatus = false;
+                nc.NotificationDelete(value.ProductName, "Ürün");
             }
             else
             {
@@ -224,6 +236,9 @@ namespace TicariOtomasyon.Controllers
                 product.ProductImage = "/panel/template/assets/images/product-images/" + newimagename;
 
                 pm.TUpdate(product);
+
+                nc.NotificationUpdate(product.ProductName, "Ürün");
+
                 TempData["güncellendi"] = "";
             }
             else

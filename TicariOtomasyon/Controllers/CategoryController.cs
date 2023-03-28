@@ -17,6 +17,7 @@ namespace TicariOtomasyon.Controllers
     {
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
         Context c = new Context();
+        NotificationClass nc = new NotificationClass();
         public IActionResult Index()
         {
             var values = c.Categories.Where(x => x.CategoryStatus == true).ToList();
@@ -47,6 +48,8 @@ namespace TicariOtomasyon.Controllers
 
                 cm.TAdd(c);
 
+                nc.NotificationAdd(c.CategoryName,"Kategori");
+
                 TempData["eklendi"] = "";
 
             }
@@ -62,6 +65,8 @@ namespace TicariOtomasyon.Controllers
         {
             var value = cm.GetById(id);
             value.CategoryStatus = false;
+
+            nc.NotificationDelete(value.CategoryName, "Kategori");
 
             cm.TDelete(value);
 
@@ -81,11 +86,14 @@ namespace TicariOtomasyon.Controllers
         [HttpPost]
         public IActionResult CategoryUpdate(Category c)
         {
-            if (c.CategoryImage != null)
+            if (c.CategoryName != null)
             {
                 c.CategoryStatus = true;
 
                 cm.TUpdate(c);
+
+                nc.NotificationUpdate(c.CategoryName, "Kategori");
+
                 TempData["güncellendi"] = "";
             }
             else
@@ -115,6 +123,9 @@ namespace TicariOtomasyon.Controllers
                 category.CategoryImage = "/panel/template/assets/images/category-images/" + newimagename;
 
                 cm.TUpdate(category);
+
+                nc.NotificationUpdate(category.CategoryName, "Kategori");
+
                 TempData["güncellendi"] = "";
             }
             else

@@ -39,8 +39,18 @@ namespace TicariOtomasyon.Controllers
             ViewBag.mevcutkar = mevcutkar;
 
 
-            var beklenen = (mevcutkar - kar)*(-1);
-            ViewBag.beklenen = beklenen;
+
+            var beklenen = mevcutkar - kar;
+
+            if (mevcutkar > kar)
+            {
+                ViewBag.beklenen = beklenen;
+            }
+            else
+            {
+                ViewBag.beklenen = beklenen*(-1);
+            }
+          
 
 
             //üst tablo için

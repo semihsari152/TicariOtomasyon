@@ -17,6 +17,7 @@ namespace TicariOtomasyon.Controllers
     {
         CurrentManager cm = new CurrentManager(new EfCurrentRepository());
         Context c = new Context();
+        NotificationClass nc = new NotificationClass();
 
         public IActionResult Index()
         {
@@ -49,6 +50,8 @@ namespace TicariOtomasyon.Controllers
                 current.CurrentPassword = current.CurrentName.ToLower() + "123";
                 cm.TAdd(current);
 
+                nc.NotificationAdd(current.CurrentName + " " + current.CurrentSurname, "Cari");
+
                 TempData["eklendi"] = "";
             }
             else
@@ -62,6 +65,8 @@ namespace TicariOtomasyon.Controllers
         {
             var value = cm.GetById(id);
             value.CurrentStatus = false;
+
+            nc.NotificationDelete(value.CurrentName + " " + value.CurrentSurname, "Cari");
 
             cm.TDelete(value);
 
@@ -86,6 +91,8 @@ namespace TicariOtomasyon.Controllers
             {    
                 current.CurrentStatus = true;
                 cm.TUpdate(current);
+
+                nc.NotificationUpdate(current.CurrentName + " " + current.CurrentSurname, "Cari");
 
                 TempData["güncellendi"] = "";
             }
@@ -122,6 +129,9 @@ namespace TicariOtomasyon.Controllers
                 current.CurrentImage = "/panel/template/assets/images/current-images/" + newimagename;
 
                 cm.TUpdate(current);
+
+                nc.NotificationUpdate(current.CurrentName + " " + current.CurrentSurname, "Cari");
+
                 TempData["güncellendi"] = "";
             }
             else
